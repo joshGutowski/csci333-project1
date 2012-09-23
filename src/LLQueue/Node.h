@@ -1,16 +1,16 @@
 #ifndef __NODE_H__
 #define __NODE_H__
 
-class Stack {
+class Node {
  private:
   int value;
-  Node* next;
+  Node * next;
 
  public:
   Node();
   ~Node();
   int getValue();
-  Node* getNext();
+  Node * getNext();
   void setNext(Node& n);
 };
 
