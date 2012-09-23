@@ -1,46 +1,40 @@
-/*#include "Stack.h"
+#include "Aqueue.h"
 #include <iostream>
 
-Stack::Stack(int initialSize) {
-  theStack = new int[initialSize];
-  top = 0;
+AQueue::AQueue(int initialSize) {
+  theQueue = new int [initialSize];
   cap = initialSize;
+  front = 0;
+  back = 0;
+  size = 0;
 }
 
-Stack::~Stack() {
-  delete[] theStack;
+AQueue::~AQueue() {
+  delete[] theQueue;
 }
 
-void Stack::push(int value) {
-  //if theStack is full
-  // create new stack twice as big
-  // copy all elements to new stack
-  // delete old stack
-  // point old stack pointer to new stack
-  if(top >= cap) {
-    temp = new int[2*cap];
-    for(int i=0; i<=cap; ++i) {
-      temp[i] = theStack[i];
-    }
-    
-    delete[] theStack;
-    theStack = temp;
-    cap = cap*2;
+void AQueue::enqueue(int n) {
+  back = (back+1)%cap;
+  theQueue[back]=n;
+  size++;
+}
+
+int AQueue::dequeue() {
+  int result = theQueue[front];
+  front = (front+1)%cap;
+  size--;
+  return result;
+}
+
+int AQueue::sizeOf() {
+  return size;
+}
+
+bool AQueue::isEmpty() {
+  if(size <= 0) {
+    return true;
   }
-  theStack[top] = value;
-  top++;
+  else {
+    return false;
+  }
 }
-
-int Stack::pop() {
-  top--;
-  return theStack[top];
-}
-
-int Stack::peek() {
-  return theStack[top-1];
-}
-
-int Stack::size() {
-  return top;
-}
-*/

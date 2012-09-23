@@ -1,22 +1,20 @@
-/*#ifndef __STACK_H__
-#define __STACK_H__
+#ifndef __AQUEUE_H__
+#define __AQUEUE_H__
 
-class Stack {
+class AQueue {
  private:
-  int* theStack;
-  int* temp;
-  int top;
+  int* theQueue;
   int cap;
+  int front;
+  int back;
+  int size;
 
  public:
-  Stack(int initialSize = 10);
-  ~Stack(); //destructor
-  void push(int value);
-  int pop();
-  int peek();
-  int size();
+  AQueue(int initialSize = 10);
+  ~AQueue();
+  void enqueue(int n);
+  int dequeue();
+  int sizeOf();
+  bool isEmpty();
 };
-
-
 #endif
-*/
