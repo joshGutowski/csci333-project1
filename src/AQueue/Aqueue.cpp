@@ -14,8 +14,8 @@ AQueue::~AQueue() {
 }
 
 void AQueue::enqueue(int n) {
+  theQueue[back] = n;
   back = (back+1)%cap;
-  theQueue[back]=n;
   size++;
 }
 
