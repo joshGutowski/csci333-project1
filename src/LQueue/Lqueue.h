@@ -1,22 +1,20 @@
-/*#ifndef __STACK_H__
-#define __STACK_H__
+#ifndef __LQUEUE_H__
+#define __LQUEUE_H__
 
-class Stack {
+class LQueue {
  private:
-  int* theStack;
-  int* temp;
-  int top;
+  int* theQueue;
   int cap;
+  int front;
+  int back;
+  int size;
 
  public:
-  Stack(int initialSize = 10);
-  ~Stack(); //destructor
-  void push(int value);
-  int pop();
-  int peek();
-  int size();
+  LQueue(int initialSize = 10);
+  ~LQueue();
+  void enqueue(int n);
+  int dequeue();
+  int sizeOf();
+  bool isEmpty();
 };
-
-
 #endif
-*/
