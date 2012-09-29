@@ -4,13 +4,13 @@
 #include <assert.h>
 
 LLQueue::LLQueue() {
-  Node* front = 0;
-  Node* back = 0;
-  int elements = 0;
+  front = 0;
+  back = 0;
+  elements = 0;
 }
 
 LLQueue::~LLQueue() {
-  while(size() != 0) {
+  while(!isEmpty()) {
     dequeue();
   }
 }
@@ -30,10 +30,15 @@ void LLQueue::enqueue(int n) {
 }
 
 int LLQueue::dequeue() {
-  assert(elements != 0);
+  assert(elements > 0);
   Node* temp = front;
   int result = front->getValue();
+  if(elements == 1) {
+    front = new Node(0);
+  }
+  else {
   front = front->getNext();
+  }
   delete temp;
   elements--;
   return result;

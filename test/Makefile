@@ -13,8 +13,8 @@ CPPFLAGS = -Wall -Wextra
 #stack: Stack.cpp $(SRC)/Stack.o $(GTEST_MAINA)
 #	$(CPP) $(CFLAGS) $(GTEST_INCLUDES) -pthread -o queue_test $^
 
-queue_test: queue.cpp $(SRC)/AQueue/Aqueue.o $(SRC)/LQueue/Lqueue.o $(GTEST_MAINA)
-	$(CPP) $(CFLAGS) $(GTEST_INCLUDES) -pthread -o queue_test queue.cpp $(SRC)/AQueue/Aqueue.o $(SRC)/LQueue/Lqueue.o $(GTEST_MAINA)
+queue_test: queue.cpp $(SRC)/AQueue/Aqueue.o $(SRC)/LQueue/Lqueue.o $(SRC)/LLQueue/LLqueue.o $(GTEST_MAINA)
+	$(CPP) $(CFLAGS) $(GTEST_INCLUDES) -pthread -o queue_test queue.cpp $(SRC)/AQueue/Aqueue.o $(SRC)/LQueue/Lqueue.o $(SRC)/LLQueue/LLqueue.o $(GTEST_MAINA)
 
 $(GTEST_MAINA): $(GTEST)/src/*.cc $(GTEST)/src/*.h
 	cd $(GTEST)/make; make

@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "../src/AQueue/Aqueue.h"
 #include "../src/LQueue/Lqueue.h"
+#include "../src/LLQueue/LLqueue.h"
 
 TEST(AQueueTest, unitTest) {
   AQueue* s = new AQueue();
@@ -42,3 +43,15 @@ TEST(LQueueTest, unitTest) {
   EXPECT_TRUE(s->isEmpty());
   delete s;
 }
+
+/*TEST(LLQueueTest, unitTest) {
+  LLQueue* s = new LLQueue();
+  EXPECT_TRUE(s->isEmpty());
+  s->enqueue(1);
+  s->enqueue(2);
+  EXPECT_EQ(2, s->size());
+  EXPECT_EQ(1, s->dequeue());
+  EXPECT_EQ(2, s->dequeue());
+  EXPECT_TRUE(s->isEmpty());
+}
+*/

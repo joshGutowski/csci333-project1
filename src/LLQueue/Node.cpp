@@ -2,8 +2,8 @@
 #include <iostream>
 
 Node::Node(int n) {
-  int value = n;
-  Node* next; 
+  value = n;
+  next = 0; 
 }
 
 Node::~Node() {
@@ -19,5 +19,5 @@ Node* Node::getNext() {
 }
 
 void Node::setNext(Node* n) {
- next -> n;
+ next = n;
 }
