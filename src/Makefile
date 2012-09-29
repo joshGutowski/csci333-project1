@@ -1,26 +1,32 @@
 BUILD = ../build
 CPP = g++
 CPPFLAGS = -Wall -Wextra
+TIME = ./TimingTests
+AQ = ./AQueue
+LQ = ./LQueue
+LLQ = ./LLQueue
 
-main: queue_tester.cpp AQueue/Aqueue.o
-	$(CPP) $(CPPFLAGS) -o $(BUILD)/main queue_tester.cpp AQueue/Aqueue.o
+main: $(TIME)/tt.cpp $(AQ)/Aqueue.o $(LQ)/Lqueue.o
+	$(CPP) $(CPPFLAGS) -o $(BUILD)/main $(TIME)/tt.cpp $(AQ)/Aqueue.o $(LQ)/Lqueue.o
 
-Aqueue.o: AQueue/Aqueue.h AQueue/Aqueue.cpp
-	$(CPP) $(CPPFLAGS) -c AQueue/Aqueue.cpp
+Aqueue.o: $(AQ)/Aqueue.h $(AQ)/Aqueue.cpp
+	$(CPP) $(CPPFLAGS) -c $(AQ)/Aqueue.cpp
 
-Lqueue.o: LQueue/Lqueue.h LQueue/Lqueue.cpp
-	$(CPP) $(CPPFLAGS) -c LQueue/Lqueue.cpp
+Lqueue.o: $(LQ)/Lqueue.h $(LQ)/Lqueue.cpp
+	$(CPP) $(CPPFLAGS) -c $(LQ)/Lqueue.cpp
 
-LLqueue.o: LLQueue/LLqueue.h LLQueue/LLqueue.cpp
-	$(CPP) $(CPPFLAGS) -c LLQueue/LLqueue.cpp
+LLqueue.o: $(LLQ)/LLqueue.h $(LLQ)/LLqueue.cpp
+	$(CPP) $(CPPFLAGS) -c $(LLQ)/LLqueue.cpp
 
 clean:
 	rm -f *.o
 	rm -f *~
-	rm -f AQueue/*.o
-	rm -f AQueue/*~
-	rm -f LQueue/*.o
-	rm -f LQueue/*~
-	rm -f LLQueue/*.o
-	rm -f LLQueue/*~
+	rm -f $(AQ)/*.o
+	rm -f $(AQ)/*~
+	rm -f $(LQ)/*.o
+	rm -f $(LQ)/*~
+	rm -f $(LLQ)/*.o
+	rm -f $(LLQ)/*~
+	rm -f $(TIME)/*.o
+	rm -f $(TIME)/*~
 	rm -f $(BUILD)/main

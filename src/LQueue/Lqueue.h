@@ -1,20 +1,18 @@
 #ifndef __LQUEUE_H__
 #define __LQUEUE_H__
 
+#include <list>
+
 class LQueue {
  private:
-  int* theQueue;
-  int cap;
-  int front;
-  int back;
-  int size;
+  std::list<int>* theQueue;
 
  public:
-  LQueue(int initialSize = 10);
+  LQueue();
   ~LQueue();
   void enqueue(int n);
   int dequeue();
-  int sizeOf();
+  int size();
   bool isEmpty();
 };
 #endif

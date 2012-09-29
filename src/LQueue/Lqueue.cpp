@@ -1,37 +1,32 @@
 #include "Lqueue.h"
 #include <iostream>
+#include "assert.h"
 
-LQueue::LQueue(int initialSize) {
-  theQueue = new int [initialSize];
-  cap = initialSize;
-  front = 0;
-  back = 0;
-  size = 0;
+LQueue::LQueue() {
+  theQueue = new std::list<int>();
 }
 
 LQueue::~LQueue() {
-  delete[] theQueue;
+  delete theQueue;
 }
 
 void LQueue::enqueue(int n) {
-  theQueue[back] = n;
-  back = (back+1)%cap;
-  size++;
+  theQueue->push_back(n);
 }
 
 int LQueue::dequeue() {
-  int result = theQueue[front];
-  front = (front+1)%cap;
-  size--;
+  assert(theQueue->size() > 0);
+  int result = theQueue->front();
+  theQueue->pop_front();
   return result;
 }
 
-int LQueue::sizeOf() {
-  return size;
+int LQueue::size() {
+  return theQueue->size();
 }
 
 bool LQueue::isEmpty() {
-  if(size <= 0) {
+  if(theQueue->size() <= 0) {
     return true;
   }
   else {

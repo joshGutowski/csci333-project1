@@ -3,6 +3,7 @@ TEST = ./test
 LIB = ./lib
 SRC = ./src
 AQUEUE = ./src/AQueue
+TT = ./src/TimingTests
 
 CPP = g++
 CPPFLAGS = -Wall -Wextra
