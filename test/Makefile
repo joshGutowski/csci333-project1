@@ -11,16 +11,17 @@ CPP = g++
 CPPFLAGS = -Wall -Wextra
 
 #stack: Stack.cpp $(SRC)/Stack.o $(GTEST_MAINA)
-#	$(CPP) $(CFLAGS) $(GTEST_INCLUDES) -pthread -o stack_test $^
+#	$(CPP) $(CFLAGS) $(GTEST_INCLUDES) -pthread -o queue_test $^
 
-stack_test: Stack.cpp $(SRC)/Stack.o $(GTEST_MAINA)
-	$(CPP) $(CFLAGS) $(GTEST_INCLUDES) -pthread -o stack_test Stack.cpp $(SRC)/Stack.o $(GTEST_MAINA)
+queue_test: queue.cpp $(SRC)/AQueue/Aqueue.o $(GTEST_MAINA)
+	$(CPP) $(CFLAGS) $(GTEST_INCLUDES) -pthread -o queue_test queue.cpp $(SRC)/AQueue/Aqueue.o $(GTEST_MAINA)
 
 $(GTEST_MAINA): $(GTEST)/src/*.cc $(GTEST)/src/*.h
 	cd $(GTEST)/make; make
 
 clean:
-	rm -f stack_test
+	rm -f *~
+	rm -f queue_test
 	rm -f $(GTEST_MAINA)
 	cd $(GTEST)/make; $(MAKE) clean
 

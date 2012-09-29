@@ -1,46 +1,53 @@
-/*#include "Stack.h"
+#include "Node.cpp"
+#include "LLqueue.h"
 #include <iostream>
+#include <assert.h>
 
-Stack::Stack(int initialSize) {
-  theStack = new int[initialSize];
-  top = 0;
-  cap = initialSize;
+LLQueue::LLQueue() {
+  Node* front = 0;
+  Node* back = 0;
+  int elements = 0;
 }
 
-Stack::~Stack() {
-  delete[] theStack;
-}
-
-void Stack::push(int value) {
-  //if theStack is full
-  // create new stack twice as big
-  // copy all elements to new stack
-  // delete old stack
-  // point old stack pointer to new stack
-  if(top >= cap) {
-    temp = new int[2*cap];
-    for(int i=0; i<=cap; ++i) {
-      temp[i] = theStack[i];
-    }
-    
-    delete[] theStack;
-    theStack = temp;
-    cap = cap*2;
+LLQueue::~LLQueue() {
+  while(size() != 0) {
+    dequeue();
   }
-  theStack[top] = value;
-  top++;
 }
 
-int Stack::pop() {
-  top--;
-  return theStack[top];
+void LLQueue::enqueue(int n) {
+  Node* temp = new Node(n);
+  if(front == 0) {
+    front = temp;
+    back = temp;
+    delete temp;
+  }
+  else {
+    back->setNext(temp);
+    delete temp;
+  }
+  elements++;
 }
 
-int Stack::peek() {
-  return theStack[top-1];
+int LLQueue::dequeue() {
+  assert(elements != 0);
+  Node* temp = front;
+  int result = front->getValue();
+  front = front->getNext();
+  delete temp;
+  elements--;
+  return result;
 }
 
-int Stack::size() {
-  return top;
+int LLQueue::size() {
+  return elements;
 }
-*/
+
+bool LLQueue::isEmpty() {
+  if(elements <= 0) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}

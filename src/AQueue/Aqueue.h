@@ -4,17 +4,19 @@
 class AQueue {
  private:
   int* theQueue;
+  int* temp;
   int cap;
   int front;
   int back;
-  int size;
+  int elements;
+  int initSize;
 
  public:
   AQueue(int initialSize = 10);
   ~AQueue();
   void enqueue(int n);
   int dequeue();
-  int sizeOf();
+  int size();
   bool isEmpty();
 };
 #endif

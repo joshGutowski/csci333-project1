@@ -13,7 +13,7 @@ int main() {
   cout << aqueue->dequeue() << endl;
   cout << aqueue->dequeue() << endl;
   delete aqueue;
-
+  /*
   LQueue* lqueue = new LQueue();
   lqueue->enqueue(5);
   lqueue->enqueue(10);
@@ -22,7 +22,7 @@ int main() {
   cout << lqueue->dequeue() << endl;
   cout << lqueue->dequeue() << endl;
   delete lqueue;
-
+  
   LLQueue* llqueue = new LLQueue();
   llqueue->enqueue(5);
   llqueue->enqueue(10);
@@ -30,7 +30,7 @@ int main() {
   cout << llqueue->dequeue() << endl;
   cout << llqueue->dequeue() << endl;
   cout << llqueue->dequeue() << endl;
-  delete llqueue;
-
+  delete llqueue; 
+  */
   return 0;
 }

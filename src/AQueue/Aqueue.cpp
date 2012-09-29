@@ -2,11 +2,12 @@
 #include <iostream>
 
 AQueue::AQueue(int initialSize) {
-  theQueue = new int [initialSize];
+  initSize = initialSize;
+  theQueue = new int[initialSize];
   cap = initialSize;
   front = 0;
   back = 0;
-  size = 0;
+  elements = 0;
 }
 
 AQueue::~AQueue() {
@@ -14,24 +15,46 @@ AQueue::~AQueue() {
 }
 
 void AQueue::enqueue(int n) {
-  theQueue[back] = n;
+  if(elements >= cap) {
+    int a = 0;
+    temp = new int[2*cap];
+    for(int i=0; i<=cap; i++) {
+      temp[a] = theQueue[i];
+      a++;
+    }
+    delete[] theQueue;
+    theQueue = temp;
+    cap = cap*2;
+  }
+ theQueue[back] = n;
   back = (back+1)%cap;
-  size++;
+  elements++;
 }
 
 int AQueue::dequeue() {
+  if((cap/4) >= elements && (cap/4) > initSize) {
+    int a = 0;
+    temp = new int[cap/2];
+    for(int i=0; i<=elements; i++) {
+      temp[a] = theQueue[i];
+      a++;
+    }
+    delete[] theQueue;
+    theQueue = temp;
+    cap = cap/2;
+  }
   int result = theQueue[front];
   front = (front+1)%cap;
-  size--;
+  elements--;
   return result;
 }
 
-int AQueue::sizeOf() {
-  return size;
+int AQueue::size() {
+  return elements;
 }
 
 bool AQueue::isEmpty() {
-  if(size <= 0) {
+ if(elements <= 0) {
     return true;
   }
   else {

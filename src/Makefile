@@ -2,8 +2,8 @@ BUILD = ../build
 CPP = g++
 CPPFLAGS = -Wall -Wextra
 
-main: queue_tester.cpp AQueue/Aqueue.o LQueue/Lqueue.o LLQueue/LLqueue.o
-	$(CPP) $(CPPFLAGS) -o $(BUILD)/main queue_tester.cpp AQueue/Aqueue.o LQueue/Lqueue.o LLQueue/LLqueue.o
+main: queue_tester.cpp AQueue/Aqueue.o
+	$(CPP) $(CPPFLAGS) -o $(BUILD)/main queue_tester.cpp AQueue/Aqueue.o
 
 Aqueue.o: AQueue/Aqueue.h AQueue/Aqueue.cpp
 	$(CPP) $(CPPFLAGS) -c AQueue/Aqueue.cpp

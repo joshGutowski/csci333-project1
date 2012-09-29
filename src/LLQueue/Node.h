@@ -4,14 +4,15 @@
 class Node {
  private:
   int value;
-  Node * next;
+  int n;
+  Node* next;
 
  public:
-  Node();
+  Node(int n);
   ~Node();
   int getValue();
-  Node * getNext();
-  void setNext(Node& n);
+  Node* getNext();
+  void setNext(Node* n);
 };
 
 
